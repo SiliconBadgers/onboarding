@@ -39,11 +39,7 @@ HDLBits runs in your browser and checks your design against a reference. Complet
 | 13 | [Simple FSM 2: synchronous reset](https://hdlbits.01xz.net/wiki/Fsm2s) | Connect next-state logic to a state register |
 | 14 | [Simple FSM 3: synchronous reset](https://hdlbits.01xz.net/wiki/Fsm3s) | Implement a complete four-state controller |
 
-For each exercise, read the explanation, fill in the module, click **Simulate**, and look for **Success!**. Keep the specified `top_module` name and ports. A compile error means your code couldn't be processed; a mismatch means the circuit ran but produced a wrong result.
-
-Some HDLBits FSM templates include `parameter` declarations that give names to state numbers. You can leave that supplied scaffolding in place. Our calculator uses an `enum` for states and direct opcode values, so you won't need to write parameters or local parameters.
-
-Before moving on, be able to explain why the counter remembers its value and why the multiplexer doesn't need a clock.
+For each exercise, read the explanation, fill in the module, click **Simulate**, and look for **Success!**.
 
 ## Verilog to SystemVerilog
 
