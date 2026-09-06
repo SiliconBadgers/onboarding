@@ -1,4 +1,4 @@
-// Student starter. Complete TODO 1, TODO 2, and TODO 3 using the README.
+// Student starter. Complete TODO 1, TODO 2, and TODO 3 using docs/05-calculator-project.md.
 // This file compiles before the TODOs are complete; it will not pass simulation.
 module calculator (
     input  logic                   clk,
@@ -35,7 +35,7 @@ module calculator (
     always_comb begin
         next_state = current_state;
 
-        // TODO 1: Complete the transitions described in the README.
+        // TODO 1: Complete the transitions described in docs/05-calculator-project.md.
         // IDLE: if a command is valid, inspect instruction[7:4].
         //       LOAD/ADD/SUB need READ_MEMORY; STORE goes to EXECUTE;
         //       an unused opcode goes directly to FINISH.

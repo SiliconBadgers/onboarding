@@ -59,7 +59,7 @@ module student_testbench;
         // Hold reset high for two rising edges. Release it on a falling edge.
         // Hint: repeat (2) @(negedge clk); waits for two falling edges.
 
-        // TODO 2: Send LOAD 1. See the README and provided calculator_tb.
+        // TODO 2: Send LOAD 1. See docs/06-simulation-testbenches.md and calculator_tb.
         // On a falling edge, wait for command_ready to be 1.
         // Set instruction and raise command_valid.
         // Wait for the next falling edge, then lower command_valid.
