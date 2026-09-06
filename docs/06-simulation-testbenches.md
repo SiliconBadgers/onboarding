@@ -4,7 +4,7 @@
 
 ## Run QuestaSim/ModelSim
 
-*Beginner path. Use your saved QuestaSim/ModelSim project from [Setup](02-setup.md#create-a-project).*
+*Beginner path. Use your saved QuestaSim/ModelSim project from [Calculator project](05-calculator-project.md#create-a-project).*
 
 ### Compile and read errors
 

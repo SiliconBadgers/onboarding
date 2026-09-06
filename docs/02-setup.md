@@ -52,17 +52,7 @@ If AppsAnywhere hasn't opened automatically, look for the **AppsAnywhere Portal*
 3. Click Mentor Graphics in the left sidebar
 4. Open Mentor-vsim
 
-## Create a project
-
-1. When QuestaSim/ModelSim opens, use the **new project** option in the startup popup if one appears. Otherwise select **File → New → Project**.
-2. Name the project `onboarding_project`.
-3. Set **Project Location** to your `SiliconBadgers/onboarding_project` folder. Keep the default library name `work`.
-4. Select **Add Existing File** (or **Add File**, depending on the version).
-5. Add all four SystemVerilog files: the two `.sv` files in `rtl` and the two in `tb`. Use **Browse** again to select files from the other folder.
-6. Keep their existing locations. You don't need to copy them into another folder. Don't add the README or the downloaded ZIP as source files.
-7. Close the Add Items window. You should see the four files in the Project tab.
-
-Keep this project for later. Next, get comfortable with the HDL syntax in [Verilog and SystemVerilog basics](03-verilog-systemverilog-basics.md).
+That's all for setup! Once you reach the [Calculator project](05-calculator-project.md), we'll guide you through actually using QuestaSim/ModelSim, starting with creating a project. For now, continue to [Verilog and SystemVerilog basics](03-verilog-systemverilog-basics.md).
 
 ---
 
