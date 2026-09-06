@@ -43,8 +43,6 @@ For each exercise, read the explanation, fill in the module, click **Simulate**,
 
 ## Verilog to SystemVerilog
 
-*Beginner path. Same circuit ideas, a few clearer keywords.*
-
 SystemVerilog extends Verilog with features for designing and testing hardware, but most of the syntax is the same; we'll use SystemVerilog for this project.
 
 | In Verilog | In this SystemVerilog project | Meaning |
