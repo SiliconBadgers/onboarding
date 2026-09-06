@@ -45,13 +45,13 @@ For each exercise, read the explanation, fill in the module, click **Simulate**,
 
 *Beginner path. Same circuit ideas, a few clearer keywords.*
 
+SystemVerilog extends Verilog with features for designing and testing hardware, but most of the syntax is the same; we'll use SystemVerilog for this project.
+
 | In Verilog | In this SystemVerilog project | Meaning |
 | --- | --- | --- |
 | `wire` / `reg` in these simple, single-driver examples | `logic` | Declare a signal; how you assign it determines the hardware |
 | `always @(*)` | `always_comb` | Combinational logic |
 | `always @(posedge clk)` | `always_ff @(posedge clk)` | Registers updated on a rising clock edge |
-| `=` in combinational blocks | Still `=` | Compute a combinational value |
-| `<=` in clocked blocks | Still `<=` | Schedule a register update |
 | `.v` file | `.sv` file | Tell the tools to use SystemVerilog |
 
 `logic` doesn't automatically mean a register, and Verilog's `reg` doesn't automatically mean a physical register either. The assignment describes whether the signal is stored. Wires still have uses in SystemVerilog; this project just doesn't need the more complicated cases.
