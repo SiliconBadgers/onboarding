@@ -7,52 +7,17 @@
 
 *Beginner path. Use VS Code to edit files and QuestaSim/ModelSim to simulate them.*
 
-## Get the project from GitHub
+## Mac Users
+1. [Download Visual Studio Code](https://code.visualstudio.com/download) for your computer and run the installer.
+2. Watch this tutorial and setup the project! [Setup Tutorial](https://mediaspace.wisc.edu/media/Kaltura+Capture+recording+-+September+6th+2026%2C+6%3A00%3A27+pm/1_shq1f3cz)
 
-1. Create a folder named `SiliconBadgers`. We recommend putting it on your Desktop.
-2. Inside it, create a folder named `onboarding_project`.
-3. Open [github.com/SiliconBadgers/onboarding](https://github.com/SiliconBadgers/onboarding).
-4. Click the green **Code** button, then **Download ZIP**.
-5. Find the downloaded ZIP in Downloads. Right-click it and select **Extract All**.
-6. Open the extracted folder, usually `onboarding-main`. Copy **its contents** into your `SiliconBadgers/onboarding_project` folder.
-7. Check that `README.md`, `docs`, `rtl`, and `tb` are directly inside `onboarding_project`. Don't work inside the ZIP.
+## Windows/Linux Users
 
-## Get VS Code and SystemVerilog support
-
-1. [Download Visual Studio Code](https://code.visualstudio.com/download) for your computer and run the installer. On Windows, choose **User Installer**. If it is already installed on a lab computer, just open it.
-2. Open VS Code. Click the **Extensions** icon on the left, or press **Ctrl+Shift+X** on Windows.
-3. Search for `eirikpre.systemverilog` and install [SystemVerilog – Language Support](https://marketplace.visualstudio.com/items?itemName=eirikpre.systemverilog).
-4. Select **File → Open Folder** and open `SiliconBadgers/onboarding_project`.
-5. Open `rtl/calculator.sv`. Its language mode at the bottom right should say **SystemVerilog**.
-6. Remember to save your edits with **Ctrl+S** before you compile your code later. Also, to view the Docs files correctly inside of VSCode you press **Ctrl+Shift+V**.
-
-SystemVerilog is the language; the extension provides editor support such as syntax coloring. Installing it doesn't install a simulator. You'll check your circuit in QuestaSim/ModelSim.
-
-## Open QuestaSim/ModelSim
-
-QuestaSim is just an beefier version of ModelSim but we won't need any of its advanced features. For this project, QuestaSim and ModelSim will function the same. On your personal Windows computer you'll use ModelSim; on a CAE computer lab computer you'll use QuestaSim; on a Mac, you'll remote access a CAE computer and use QuestaSim.
-
-**Personal Windows computer**
-
-Use an existing ModelSim installation, or get the Windows installer from the [official ModelSim FPGA 20.1.1 download page](https://www.altera.com/downloads/simulation-tools/modelsim-fpgas-standard-edition-software-version-20-1-1). Download `ModelSimSetup-20.1.1.720-windows.exe`, run it, and select **ModelSim FPGA Starter Edition** when prompted to choose an edition. The vendor download may require an account. This is a legacy release; if installation doesn't work on your device, use the CAE route below and ask Simon for help.
-
-**CAE computer lab**
-
-1. Open the **AppsAnywhere launcher/portal**.
-2. Find and open **Quartus** through AppsAnywhere. The first launch can take a few minutes.
-3. After Quartus opens, click the Windows button at the bottom left. Search for **QuestaSim** and open it.
-4. Once QuestaSim opens, you can close Quartus.
-
-If AppsAnywhere hasn't opened automatically, look for the **AppsAnywhere Portal** desktop shortcut. [CAE's AppsAnywhere guide](https://kb.wisc.edu/cae/153617) has more help. If you're using a Mac or Linux personal computer, use a CAE lab computer for this simulation exercise. Or:
-
-**Mac Computers**
-
-1. Open this link: [Guacamole Graphical Remote](https://kb.wisc.edu/cae/163323) and follow the instructions to gain remote access to a CAE computer.
-2. Click apps in the top left
-3. Click Mentor Graphics in the left sidebar
-4. Open Mentor-vsim
-
-That's all for setup! Once you reach the [Calculator project](05-calculator-project.md), we'll guide you through actually using QuestaSim/ModelSim, starting with creating a project. For now, continue to [Verilog and SystemVerilog basics](03-verilog-systemverilog-basics.md).
+If you wanna run everything on your computer (you'll be using ModelSim), if you're okay with remote accessing (you'll be using QuestaSim)
+1. [Download Visual Studio Code](https://code.visualstudio.com/download) for your computer and run the installer.
+2. Make a SiliconBadgers folder where you wanna store club work. Put it somewhere you'll remember like in your desktop.
+3. Cd into that folder and git clone `"git clone https://github.com/SiliconBadgers/onboarding.git"`
+4. Press **Ctrl+Shift+X**, search for `eirikpre.systemverilog` and install [SystemVerilog – Language Support](https://marketplace.visualstudio.com/items?itemName=eirikpre.systemverilog).
 
 ---
 
