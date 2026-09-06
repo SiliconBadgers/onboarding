@@ -77,6 +77,8 @@ Start by implementing LOAD and following it through the waveform. Then add ADD a
 
 Leave the reset, module ports, and supplied interface logic in place. Don't add parameters, local parameters, helper functions, or tasks. The provided `enum` just gives readable names to the four states.
 
+A [completed reference solution](../solutions/calculator.sv) is available if you need to compare your work. Try the project yourself first. To simulate the solution, use it instead of the starter; never add both calculator files to the same project.
+
 ---
 
 [← Previous: ISA refresher](04-isa-refresher.md) · [Start here](../README.md) · [Next: Simulation and testbenches →](06-simulation-testbenches.md)
