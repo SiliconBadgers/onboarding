@@ -44,6 +44,7 @@ For each exercise, read the explanation, fill in the module, click **Simulate**,
 ## Verilog to SystemVerilog
 
 SystemVerilog extends Verilog with features for designing and testing hardware, but most of the syntax is the same; we'll use SystemVerilog for this project.
+Here are some of the main syntax differences:
 
 | In Verilog | In this SystemVerilog project | Meaning |
 | --- | --- | --- |
@@ -52,7 +53,6 @@ SystemVerilog extends Verilog with features for designing and testing hardware, 
 | `always @(posedge clk)` | `always_ff @(posedge clk)` | Registers updated on a rising clock edge |
 | `.v` file | `.sv` file | Tell the tools to use SystemVerilog |
 
-`logic` doesn't automatically mean a register, and Verilog's `reg` doesn't automatically mean a physical register either. The assignment describes whether the signal is stored. Wires still have uses in SystemVerilog; this project just doesn't need the more complicated cases.
 
 ### A live answer versus a saved answer
 
