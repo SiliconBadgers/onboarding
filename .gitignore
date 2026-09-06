@@ -1,0 +1,28 @@
+# Leadership-only answers and quiz blueprint stay on this computer.
+/instructor_solution/
+/google_form_blueprint.md
+
+# Local verification tools, reports and previews.
+/.tools/
+/.validation/
+/.staging/
+
+# QuestaSim/ModelSim creates these on each student's computer.
+work/
+*_work/
+*.mpf
+*.mti
+*.cr.mti
+*.wlf
+*.vcd
+*.vvp
+*.log
+transcript
+modelsim.ini
+vsim_stacktrace.vstf
+
+# Editor and operating system files.
+.DS_Store
+Thumbs.db
+*.bak
+*.swp
