@@ -6,11 +6,13 @@
 
 *Beginner path.*
 
-An **integrated circuit (IC)**, or chip, is a small piece of semiconductor containing transistors and connections that form a circuit. Think of all the gates and registers in a digital design physically connected on silicon. The silicon piece is the **die**; the package protects it and connects it to the circuit board.
+An **integrated circuit (IC)**, or chip, is a tiny piece of semiconductor material, usually silicon, with transistors and electrical connections built into it. In a digital chip, those transistors form logic gates and registers that work together to process and store information.
 
-An **ASIC**, or application-specific integrated circuit, is a chip designed for a particular application. For example, a video encoder chip has hardware built for encoding video. Its physical circuitry is fixed when it's manufactured.
+An **ASIC**, or application-specific integrated circuit, is a chip designed for a particular application. For example, a video encoder chip has specialized hardware to encode video quickly and efficiently. Its physical circuitry is fixed when it's manufactured.
 
-An **FPGA**, or field-programmable gate array, is a manufactured chip containing configurable logic, registers, routing, and often memory and arithmetic blocks. You load a configuration that connects those resources into your circuit. Today it could be our calculator; tomorrow you can reconfigure it into a different design.
+Not every chip is an ASIC. A **general-purpose CPU**, like the processor in your laptop, runs software for many different tasks rather than specializing in one application. Its physical circuitry is also fixed, but different programs tell that circuitry what to do.
+
+An **FPGA**, or field-programmable gate array, is a manufactured chip containing configurable logic, registers, routing, and often memory and arithmetic blocks. You load a configuration that connects those resources into your circuit, and you can reconfigure it later to implement a different design.
 
 **SystemVerilog describes hardware.** Two `always_ff` blocks describe registers that operate at the same time. Writing the second block below the first does not mean the hardware waits for the first block to finish.
 
