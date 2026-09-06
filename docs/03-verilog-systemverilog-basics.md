@@ -97,6 +97,40 @@ In `always_ff`, leaving a register unassigned in a branch means **keep its value
 
 A literal like `8'd11` means “eight bits, decimal 11.” `8'h11` means “eight bits, hexadecimal 11,” which is decimal 17. `8'sd11` is signed decimal 11; write negative five as `-8'sd5`. The calculator uses signed 8-bit data, so its range is −128 through 127. Overflow wraps: 127 + 1 becomes −128.
 
+## Try it: a live value and a saved value
+
+Imagine a display that switches between two numbers, plus a register that saves the displayed number when you ask it to. Write the two blocks below yourself—no simulator or submission is needed for this quick check.
+
+- `live_value` shows `a` when `select_b` is 0 and `b` when `select_b` is 1. It responds to input changes without waiting for a clock edge.
+- On each rising clock edge, `saved_value` becomes 0 if `reset` is high. Otherwise, if `save` is high, it captures `live_value`. If neither is high, it keeps its previous value. Reset takes priority over save.
+
+```systemverilog
+module value_capture (
+    input  logic       clk, reset, save, select_b,
+    input  logic [7:0] a, b,
+    output logic [7:0] live_value, saved_value
+);
+    // TODO: Write an always_comb block for live_value.
+    // Assign it on both paths through the selection.
+
+    // TODO: Write an always_ff block for saved_value.
+    // Use a synchronous reset and the save behavior described above.
+endmodule
+```
+
+Now trace your circuit. Start with `a = 3`, `b = 9`, `select_b = 0`, `save = 0`, and `reset = 1`. Work through the rows in order; inputs keep their values unless a row changes them. Read outputs after the logic and any register updates have settled.
+
+| Event | `live_value` | `saved_value` |
+| --- | --- | --- |
+| A rising clock edge occurs with reset high | ? | ? |
+| Lower reset and raise save between edges, then a rising edge occurs | ? | ? |
+| Change select_b to 1 between edges; no new rising edge yet | ? | ? |
+| Lower save before the next rising edge, then that edge occurs | ? | ? |
+| Raise reset between edges; no new rising edge yet | ? | ? |
+| The next rising edge occurs with reset still high | ? | ? |
+
+Finally, explain: why would leaving out the `select_b = 0` assignment in the combinational block imply a latch, while leaving out an assignment when `save = 0` in the clocked block is intentional? Which block uses `=`, and which uses `<=`?
+
 ---
 
 [← Previous: Setup](02-setup.md) · [Start here](../README.md) · [Next: ISA refresher →](04-isa-refresher.md)
