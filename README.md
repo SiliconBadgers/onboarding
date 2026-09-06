@@ -1,5 +1,8 @@
 # Silicon Badgers onboarding
 
+> [!IMPORTANT]
+> **Viewing these docs in VS Code? Press Ctrl+Shift+V!** Open a README or Docs `.md` file, then press **Ctrl+Shift+V** to view it with the formatting displayed correctly instead of raw Markdown text.
+
 Welcome! Silicon Badgers is a student organization where we learn chip design by building real hardware together. This onboarding gives you the background to understand what we're making and start contributing.
 
 Our first Tiny Tapeout project is aimed at MNIST handwritten-digit inference. Over the next 1–2 semesters, we plan to build a larger FPGA prototype for AI inference, including LLMs, with the longer-term goal of an ASIC. Here, you'll learn how the model, compiler, instructions, and hardware fit together.

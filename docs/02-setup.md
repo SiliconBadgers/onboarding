@@ -1,5 +1,8 @@
 # Setup
 
+> [!IMPORTANT]
+> **Viewing these docs in VS Code? Press Ctrl+Shift+V!** Open a README or Docs `.md` file, then press **Ctrl+Shift+V** to view it with the formatting displayed correctly instead of raw Markdown text.
+
 [Start here](../README.md) · Document 2 of 10
 
 *Beginner path. Use VS Code to edit files and QuestaSim/ModelSim to simulate them.*
