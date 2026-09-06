@@ -30,7 +30,7 @@ SystemVerilog is the language; the extension provides editor support such as syn
 
 ## Open QuestaSim/ModelSim
 
-QuestaSim is just an beefier version of ModelSim but we won't need any of its advanced features. For this project, QuestaSim and ModelSim will function the same. On your personal Windows computer you'll use ModelSim; on a CAE computer lab computer you'll use QuestaSim.
+QuestaSim is just an beefier version of ModelSim but we won't need any of its advanced features. For this project, QuestaSim and ModelSim will function the same. On your personal Windows computer you'll use ModelSim; on a CAE computer lab computer you'll use QuestaSim; on a Mac, you'll remote access a CAE computer and use QuestaSim.
 
 **Personal Windows computer**
 
