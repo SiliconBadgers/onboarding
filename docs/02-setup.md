@@ -40,7 +40,14 @@ Use an existing ModelSim installation, or get the Windows installer from the [of
 3. After Quartus opens, click the Windows button at the bottom left. Search for **QuestaSim** and open it.
 4. Once QuestaSim opens, you can close Quartus.
 
-If AppsAnywhere hasn't opened automatically, look for the **AppsAnywhere Portal** desktop shortcut. [CAE's AppsAnywhere guide](https://kb.wisc.edu/cae/153617) has more help. If you're using a Mac or Linux personal computer, use a CAE lab computer for this simulation exercise.
+If AppsAnywhere hasn't opened automatically, look for the **AppsAnywhere Portal** desktop shortcut. [CAE's AppsAnywhere guide](https://kb.wisc.edu/cae/153617) has more help. If you're using a Mac or Linux personal computer, use a CAE lab computer for this simulation exercise. Or:
+
+**Mac Computers**
+
+1. Open this link: [Guacamole Graphical Remote](https://kb.wisc.edu/cae/163323) and follow the instructions to gain remote access to a CAE computer.
+2. Click apps in the top left
+3. Click Mentor Graphics in the left sidebar
+4. Open Mentor-vsim
 
 ## Create a project
 
