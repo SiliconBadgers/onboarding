@@ -6,26 +6,13 @@
 
 ## Get the project from GitHub
 
-1. Create a folder named `SiliconBadgers` somewhere you can find it, such as Documents.
+1. Create a folder named `SiliconBadgers`. We recommend putting it on your Desktop.
 2. Inside it, create a folder named `onboarding_project`.
 3. Open [github.com/SiliconBadgers/onboarding](https://github.com/SiliconBadgers/onboarding).
 4. Click the green **Code** button, then **Download ZIP**.
 5. Find the downloaded ZIP in Downloads. Right-click it and select **Extract All**.
 6. Open the extracted folder, usually `onboarding-main`. Copy **its contents** into your `SiliconBadgers/onboarding_project` folder.
 7. Check that `README.md`, `docs`, `rtl`, and `tb` are directly inside `onboarding_project`. Don't work inside the ZIP.
-
-```text
-SiliconBadgers/
-└── onboarding_project/
-    ├── README.md                 Start here
-    ├── docs/                     Onboarding lessons
-    ├── rtl/
-    │   ├── calculator.sv           You complete this
-    │   └── data_memory.sv          Provided; leave it alone
-    └── tb/
-        ├── calculator_tb.sv        Provided checks; leave them alone
-        └── student_testbench.sv    You complete this later
-```
 
 ## Get VS Code and SystemVerilog support
 
@@ -34,13 +21,13 @@ SiliconBadgers/
 3. Search for `eirikpre.systemverilog` and install [SystemVerilog – Language Support](https://marketplace.visualstudio.com/items?itemName=eirikpre.systemverilog).
 4. Select **File → Open Folder** and open `SiliconBadgers/onboarding_project`.
 5. Open `rtl/calculator.sv`. Its language mode at the bottom right should say **SystemVerilog**.
-6. Save edits with **Ctrl+S** before compiling. You can preview any Markdown lesson using **Ctrl+Shift+V**.
+6. Remember to save your edits with **Ctrl+S** before you compile your code later. Also, to view the Docs files correctly inside of VSCode you press **Ctrl+Shift+V**.
 
 SystemVerilog is the language; the extension provides editor support such as syntax coloring. Installing it doesn't install a simulator. You'll check your circuit in QuestaSim/ModelSim.
 
 ## Open QuestaSim/ModelSim
 
-QuestaSim is an upgraded version of ModelSim with more advanced features, but **for this project they function the same**. On your personal Windows computer you'll use ModelSim; on a CAE computer lab computer you'll use QuestaSim. We call it **QuestaSim/ModelSim** throughout this guide.
+QuestaSim is just an beefier version of ModelSim but we won't need any of its advanced features. For this project, QuestaSim and ModelSim will function the same. On your personal Windows computer you'll use ModelSim; on a CAE computer lab computer you'll use QuestaSim.
 
 **Personal Windows computer**
 
