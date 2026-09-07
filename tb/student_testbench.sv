@@ -69,7 +69,7 @@ module student_testbench;
 
         // TODO 4: Check memory.memory[4] against -8'sd5 using !==.
         // Print an error and call $fatal(1, "...") if they do not match.
-        // Otherwise print STUDENT TEST PASSED and call $finish.
+        // Otherwise print STUDENT TEST PASSED and call $stop.
         // Replace the temporary stop below with your check.
         $fatal(1, "TODO: complete student_testbench.sv before running it.");
     end

@@ -35,9 +35,8 @@ Select `calculator_tb`, not `calculator` or `student_testbench` for this first t
 3. Right-click the selection and choose **Add Wave → Selected Signals** (some versions label this **Add to Wave**). The signals should appear in the **Wave** window.
 4. Expand `calculator_tb` in the Sim pane and select `dut`. Add `current_state` from Objects too.
 5. In Wave, right-click `instruction` and choose **Radix → Hexadecimal**. Set the accumulator and memory data signals to **Decimal/signed decimal**, so negative results show as negative numbers. Keep address unsigned.
-6. In the Transcript, enter `onfinish stop`. This keeps the simulation available for waveform inspection when the testbench finishes.
-7. Click **Run All**, or type `run -all` in the Transcript and press Enter.
-8. Click inside the **Wave** window, then press the **Zoom Full magnifying-glass button**. Hover over the magnifying-glass icons until the tooltip says **Zoom Full**; a plain Zoom In button won't fit the whole run. You can also type `wave zoom full`.
+6. Click **Run All**, or type `run -all` in the Transcript and press Enter. The provided testbench pauses itself when it finishes, so QuestaSim/ModelSim should not ask whether you want to finish the simulation.
+7. Click inside the **Wave** window, then press the **Zoom Full magnifying-glass button**. Hover over the magnifying-glass icons until the tooltip says **Zoom Full**; a plain Zoom In button won't fit the whole run. You can also type `wave zoom full`.
 
 If a signal is missing because it was optimized away, enter `quit -sim`, then `vsim -voptargs=+acc work.calculator_tb`, and add the signals again before running.
 
@@ -76,7 +75,7 @@ The scaffold provides signal declarations, module connections, and a clock. You 
 2. Send `LOAD 1`, wait for completion, then send `SUB 0`, and finally `STORE 4`.
 3. Follow the command handshake: on a falling edge when ready is high, present the instruction byte and valid. On the next falling edge, lower valid: the intervening rising edge accepted the command. Wait for done before the next instruction.
 4. Check `memory.memory[4]` against `-8'sd5`. This name means “the array named memory inside the instance named memory.”
-5. Print **STUDENT TEST PASSED** only if the result is right. Otherwise use `$fatal(1, "Unexpected result");`. End a successful test with `$finish;`.
+5. Print **STUDENT TEST PASSED** only if the result is right. Otherwise use `$fatal(1, "Unexpected result");`. End a successful test with `$stop;`. This pauses the testbench without asking whether you want to finish the simulation.
 
 Look at the provided testbench to understand the timing. In simulation, `@(negedge clk);` waits for a falling edge and `@(posedge clk);` waits for a rising edge. Our hardware updates on rising edges, so driving and checking on falling edges avoids competing with those updates. Recheck ready on a falling edge before each command, even after seeing done.
 

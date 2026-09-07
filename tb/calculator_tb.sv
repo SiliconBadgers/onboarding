@@ -195,7 +195,8 @@ module calculator_tb;
         end
 
         $display("ALL TESTS PASSED");
-        $finish;
+        // Pause so Run All keeps the simulation open without a finish prompt.
+        $stop;
     end
 
 endmodule

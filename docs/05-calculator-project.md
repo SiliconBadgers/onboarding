@@ -8,7 +8,7 @@ Your job is to finish the calculator's state transitions, memory-read register, 
 
 ## Create a project
 
-Open QuestaSim/ModelSim using the instructions in [Setup](02-setup.md#open-questasimmodelsim), then create a project for the calculator:
+Open QuestaSim/ModelSim using the instructions in [Setup](02-setup.md), then create a project for the calculator:
 
 1. When QuestaSim/ModelSim opens, use the **new project** option in the startup popup if one appears. Otherwise select **File → New → Project**.
 2. Name the project `onboarding_project`.
@@ -77,7 +77,7 @@ Start by implementing LOAD and following it through the waveform. Then add ADD a
 
 Leave the reset, module ports, and supplied interface logic in place. Don't add parameters, local parameters, helper functions, or tasks. The provided `enum` just gives readable names to the four states.
 
-A [completed reference solution](../solutions/calculator.sv) is available if you need to compare your work. Try the project yourself first. To simulate the solution, use it instead of the starter; never add both calculator files to the same project.
+A [completed reference solution](../solutions/calculator_solutions.sv) is available if you need to compare your work. Try the project yourself first. To simulate the solution, use it instead of the starter; never add both calculator files to the same project.
 
 ---
 
