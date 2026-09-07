@@ -2,9 +2,11 @@
 
 [Start here](../README.md) · Document 6 of 10
 
-## Run QuestaSim/ModelSim
+### Run QuestaSim/ModelSim
 
-*Beginner path. Use your saved QuestaSim/ModelSim project from [Calculator project](05-calculator-project.md#create-a-project).*
+## Mac Tutorial
+
+If you're on Mac you will have to remote access a CAE computer to get access to QuestaSim. Don't worry! It's actually super simple and will take 2 minutes max. Here's a [tutorial](https://mediaspace.wisc.edu/media/QuestaSim+for+Mac/1_u631yf90)!
 
 ### Compile and read errors
 
