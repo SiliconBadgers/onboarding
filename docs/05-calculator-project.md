@@ -6,20 +6,6 @@
 
 Your job is to finish the calculator's state transitions, memory-read register, and accumulator updates. The memory and instruction interface are already provided. The starting code is valid SystemVerilog, but it is intentionally incomplete; it will not pass the testbench yet.
 
-## Create a project
-
-Open QuestaSim/ModelSim using the instructions in [Setup](02-setup.md), then create a project for the calculator:
-
-1. When QuestaSim/ModelSim opens, use the **new project** option in the startup popup if one appears. Otherwise select **File → New → Project**.
-2. Name the project `onboarding_project`.
-3. Set **Project Location** to your `SiliconBadgers/onboarding_project` folder. Keep the default library name `work`.
-4. Select **Add Existing File** (or **Add File**, depending on the version).
-5. Add all four SystemVerilog files: the two `.sv` files in `rtl` and the two in `tb`. Use **Browse** again to select files from the other folder.
-6. Keep their existing locations. You don't need to copy them into another folder. Don't add the README or the downloaded ZIP as source files.
-7. Close the Add Items window. You should see the four files in the Project tab.
-
-Keep this project open while you work on the RTL in VS Code. The next document, [Simulation and testbenches](06-simulation-testbenches.md), walks you through compiling, running tests, and viewing waveforms.
-
 ## The provided memory
 
 `rtl/data_memory.sv` contains 16 signed 8-bit locations. It starts with 8 at address 0, 3 at address 1, and zero everywhere else.
