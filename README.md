@@ -34,7 +34,7 @@ For the coding exercises, try to use minimal AI and write most of the code yours
 | --- | --- | --- |
 | 1 | Start here (this README) | Everyone |
 | 2 | [Setup](docs/02-setup.md) | Beginner path |
-| 3 | [Verilog and SystemVerilog basics](docs/03-verilog-systemverilog-basics.md) | Beginner path |
+| 3 | [Learning Systemverilog](docs/03-learning-systemverilog.md) | Beginner path |
 | 4 | [ISA refresher](docs/04-isa-refresher.md) | Everyone |
 | 5 | [Calculator project](docs/05-calculator-project.md) | Beginner path |
 | 6 | [Simulation and testbenches](docs/06-simulation-testbenches.md) | Beginner path |

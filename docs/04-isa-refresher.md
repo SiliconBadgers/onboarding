@@ -65,6 +65,6 @@ Keep your answers nearby. You'll see the same ideas in the accelerator section.
 
 ---
 
-[← Previous: Verilog and SystemVerilog basics](03-verilog-systemverilog-basics.md) · [Start here](../README.md) · [Next: Calculator project →](05-calculator-project.md)
+[← Previous: Learning Systemverilog](03-learning-systemverilog.md) · [Start here](../README.md) · [Next: Calculator project →](05-calculator-project.md)
 
 **ECE 551 path:** skip the two coding documents and go to [Chip design →](07-chip-design.md).

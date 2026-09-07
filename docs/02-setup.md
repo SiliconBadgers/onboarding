@@ -21,4 +21,4 @@ If you wanna run everything on your computer (you'll be using ModelSim), if you'
 
 ---
 
-[← Previous: Start here](../README.md) · [Start here](../README.md) · [Next: Verilog and SystemVerilog basics →](03-verilog-systemverilog-basics.md)
+[← Previous: Start here](../README.md) · [Start here](../README.md) · [Next: Learning Systemverilog →](03-learning-systemverilog.md)
