@@ -8,6 +8,10 @@
 
 If you're on Mac you will have to remote access a CAE computer to get access to QuestaSim. Don't worry! It's actually super simple and will take 2 minutes max. Here's a [tutorial](https://mediaspace.wisc.edu/media/QuestaSim+for+Mac/1_u631yf90)!
 
+## Stuck?
+
+If you get stuck in any of the following steps you can refer to this [video](https://mediaspace.wisc.edu/media/QuestaSim+ModelSim+Compile+Simulate+Tutorial/1_afrsdwu5) for help!
+
 ### Compile and read errors
 
 1. Save your code in VS Code.
