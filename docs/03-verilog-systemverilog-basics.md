@@ -18,7 +18,7 @@ An **FPGA**, or field-programmable gate array, is a manufactured chip containing
 
 ## Learn enough Verilog
 
-*Beginner path. About two hours; it's fine if the FSMs take longer.*
+*Beginner path.*
 
 HDLBits runs in your browser and checks your design against a reference. Complete **only the exercises listed here**, in this order. You don't need to work through the entire website.
 

@@ -5,18 +5,18 @@
 
 Welcome! Silicon Badgers is a student organization where we learn chip design by building real hardware together. This onboarding gives you the background to understand what we're making and start contributing.
 
-Our first Tiny Tapeout project is aimed at MNIST handwritten-digit inference. Over the next 1–2 semesters, we plan to build a larger FPGA prototype for AI inference, including LLMs, with the longer-term goal of an ASIC. Here, you'll learn how the model, compiler, instructions, and hardware fit together.
+Our first Tiny Tapeout project is aimed at MNIST handwritten-digit inference. In the future, we plan to build a larger FPGA prototype for AI inference, including LLMs, with the longer-term goal of an ASIC. Here, you'll learn how the model, compiler, instructions, and hardware fit together.
 
 We assume you already know binary, logic gates, registers, and state machines. There are **no Python assignments** in this onboarding.
 
 ## Start here
 
-| Your background | What to do | Estimated time |
-| --- | --- | --- |
-| Haven't completed ECE 551 | Read documents 2–10 in order, including HDLBits, the calculator, and your own small testbench. | 6–8 hours |
-| Completed ECE 551 | Read this introduction, then documents **4 → 7 → 8 → 9 → 10** below. Skip the HDLBits and coding exercises; optionally revisit them. | 2–3 hours |
+| Your background | What to do |
+| --- | --- |
+| Haven't completed ECE 551 | Read documents 2–10 in order, including HDLBits, the calculator, and your own small testbench. |
+| Completed ECE 551 | Read this introduction, then documents **4 → 7 → 8 → 9 → 10** below. Skip the HDLBits and coding exercises; optionally revisit them. |
 
-Spread this over about a week. These are estimates, not a speed test. Submit the Google Form **at the end**, after finishing your path.
+Submit the Google Form **at the end**, after finishing your path.
 
 **Stuck? Message Simon Richter, our Onboarding Chair, on Slack.** Include what you tried and a screenshot or error message when useful.
 
