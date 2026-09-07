@@ -4,6 +4,11 @@
 
 *Everyone. Work through the numbers; no Python installation or coding is needed.*
 
+### Before you read
+
+This doc is complicated. You will NOT understand everything the first time. That's ok! Use AI to dumb things down, and if you're still stuck feel free to ask one of the
+more experienced club members for help. Once you understand this doc you will feel smart and happy...so try your best! -Bilal
+
 ## Start with a 3×3 image
 
 Imagine a black-and-white image stored as grayscale values: 0 is black, 255 is white. One pixel fits in an unsigned byte. Eight bits have **2⁸ = 256 possible values**, including both endpoints 0 and 255.
