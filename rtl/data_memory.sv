@@ -8,7 +8,7 @@ module data_memory (
 
     // 16 signed bytes. The initial values are provided for this simulation lab.
     // This initial block is not a universal ASIC power-on/reset mechanism.
-    logic signed [7:0] memory [0:15] = '{8'sd8, 8'sd3, 14{8'sd0}};
+    logic signed [7:0] memory [0:15] = '{0: 8'sd8, 1: 8'sd3, default: 8'sd0};
 
     // Asynchronous read: changing address changes read_data without a clock.
     always_comb begin
