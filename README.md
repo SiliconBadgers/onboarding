@@ -7,7 +7,7 @@ Welcome! Silicon Badgers is a student organization where we learn chip design by
 
 Our first Tiny Tapeout project is aimed at MNIST handwritten-digit inference. Over the next 1–2 semesters, we plan to build a larger FPGA prototype for AI inference, including LLMs, with the longer-term goal of an ASIC. Here, you'll learn how the model, compiler, instructions, and hardware fit together.
 
-We assume you already know binary, logic gates, registers, state machines, and basic Python. There are **no Python assignments** in this onboarding.
+We assume you already know binary, logic gates, registers, and state machines. There are **no Python assignments** in this onboarding.
 
 ## Start here
 
