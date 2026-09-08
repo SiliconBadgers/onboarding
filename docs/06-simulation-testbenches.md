@@ -77,13 +77,13 @@ A testbench is the simulation environment around the hardware. It provides input
 
 The scaffold provides signal declarations, module connections, and a clock. You write the reset sequence, commands, and result check. Your test should calculate **3 − 8 = −5** and store it at address 4.
 
-1. Initialize reset, instruction, and valid so inputs don't start unknown. Keep reset high across at least two rising edges, then lower it on a falling edge.
+1. Initialize reset, instruction, and valid so inputs don't start unknown. Keep reset high across at least two rising edges. After the second edge, wait `#1` before lowering reset.
 2. Send `LOAD 1`, wait for completion, then send `SUB 0`, and finally `STORE 4`.
-3. Follow the command handshake: on a falling edge when ready is high, present the instruction byte and valid. On the next falling edge, lower valid: the intervening rising edge accepted the command. Wait for done before the next instruction.
+3. Follow the command handshake using only rising edges. After a rising edge, wait `#1`, check that ready is high, then present the instruction byte and valid. Keep them stable through the next rising edge so the command is accepted. Wait `#1`, lower valid, and check done after later rising edges.
 4. Check `memory.memory[4]` against `-8'sd5`. This name means “the array named memory inside the instance named memory.”
 5. Print **STUDENT TEST PASSED** only if the result is right. Otherwise use `$fatal(1, "Unexpected result");`. End a successful test with `$stop;`. This pauses the testbench without asking whether you want to finish the simulation.
 
-Look at the provided testbench to understand the timing. In simulation, `@(negedge clk);` waits for a falling edge and `@(posedge clk);` waits for a rising edge. Our hardware updates on rising edges, so driving and checking on falling edges avoids competing with those updates. Recheck ready on a falling edge before each command, even after seeing done.
+Look at the provided testbench to understand the timing. `@(posedge clk);` waits for a rising edge, and the following `#1;` gives the calculator's nonblocking register updates time to settle before the testbench reads or changes signals. Inputs driven after that delay stay stable until the next rising edge, when the calculator accepts them. Recheck ready after a rising edge and `#1` before each command, even after seeing done.
 
 Use `!==` for the result check so an unknown `X` also counts as wrong. The scaffold has a timeout so a missing clock/reset/command doesn't leave the simulation running forever.
 

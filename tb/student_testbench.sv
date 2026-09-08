@@ -55,22 +55,29 @@ module student_testbench;
     end
 
     initial begin
-        // TODO 1: Initialize reset, command_valid, and instruction.
-        // Hold reset high for two rising edges. Release it on a falling edge.
-        // Hint: repeat (2) @(negedge clk); waits for two falling edges.
+        /*
+         * TODO 1: Initialize reset, command_valid, and instruction.
+         * Hold reset high for two rising edges. After the second rising edge,
+         * wait #1 before releasing reset so the DUT's updates have settled.
+         */
 
-        // TODO 2: Send LOAD 1. See docs/06-simulation-testbenches.md and calculator_tb.
-        // On a falling edge, wait for command_ready to be 1.
-        // Set instruction and raise command_valid.
-        // Wait for the next falling edge, then lower command_valid.
-        // Wait until command_done is 1 before sending another instruction.
+        /*
+         * TODO 2: Send LOAD 1. See docs/06-simulation-testbenches.md and
+         * calculator_tb.sv for the pattern.
+         * Wait for a rising edge, then wait #1 before checking command_ready.
+         * Set instruction and raise command_valid while ready is high.
+         * Keep them stable through the next rising edge, wait #1, and then
+         * lower command_valid. Check command_done after rising edges and #1.
+         */
 
-        // TODO 3: Repeat the pattern for SUB 0 and STORE 4.
+        // TODO 3: Repeat the same pattern for SUB 0 and STORE 4.
 
-        // TODO 4: Check memory.memory[4] against -8'sd5 using !==.
-        // Print an error and call $fatal(1, "...") if they do not match.
-        // Otherwise print STUDENT TEST PASSED and call $stop.
-        // Replace the temporary stop below with your check.
+        /*
+         * TODO 4: Check memory.memory[4] against -8'sd5 using !==.
+         * Print an error and call $fatal(1, "...") if they do not match.
+         * Otherwise print STUDENT TEST PASSED and call $stop.
+         * Replace the temporary stop below with your check.
+         */
         $fatal(1, "TODO: complete student_testbench.sv before running it.");
     end
 

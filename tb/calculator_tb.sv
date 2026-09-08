@@ -61,21 +61,26 @@ module calculator_tb;
         instruction   = 8'h00;
         error_count   = 0;
 
-        // Change test inputs on falling edges, away from the DUT's rising edge.
-        repeat (2) @(negedge clk);
+        // Wait just past rising edges so the DUT's register updates can settle.
+        repeat (2) @(posedge clk);
+        #1;
         reset = 1'b0;
 
         // LOAD 0
-        @(negedge clk);
+        @(posedge clk);
+        #1;
         while (command_ready !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         instruction   = 8'h00;
         command_valid = 1'b1;
-        @(negedge clk); // A rising edge has accepted the instruction.
+        @(posedge clk);
+        #1; // The accepted instruction and register updates have settled.
         command_valid = 1'b0;
         while (command_done !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         if (accumulator !== 8'sd8) begin
             $display("ERROR after LOAD 0: expected accumulator = 8, got %0d", accumulator);
@@ -83,16 +88,20 @@ module calculator_tb;
         end
 
         // ADD 1
-        @(negedge clk);
+        @(posedge clk);
+        #1;
         while (command_ready !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         instruction   = 8'h11;
         command_valid = 1'b1;
-        @(negedge clk); // A rising edge has accepted the instruction.
+        @(posedge clk);
+        #1; // The accepted instruction and register updates have settled.
         command_valid = 1'b0;
         while (command_done !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         if (accumulator !== 8'sd11) begin
             $display("ERROR after ADD 1: expected accumulator = 11, got %0d", accumulator);
@@ -100,16 +109,20 @@ module calculator_tb;
         end
 
         // STORE 2
-        @(negedge clk);
+        @(posedge clk);
+        #1;
         while (command_ready !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         instruction   = 8'h32;
         command_valid = 1'b1;
-        @(negedge clk); // A rising edge has accepted the instruction.
+        @(posedge clk);
+        #1; // The accepted instruction and register updates have settled.
         command_valid = 1'b0;
         while (command_done !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         if (accumulator !== 8'sd11) begin
             $display("ERROR after STORE 2: expected accumulator = 11, got %0d", accumulator);
@@ -125,16 +138,20 @@ module calculator_tb;
         end
 
         // LOAD 0
-        @(negedge clk);
+        @(posedge clk);
+        #1;
         while (command_ready !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         instruction   = 8'h00;
         command_valid = 1'b1;
-        @(negedge clk); // A rising edge has accepted the instruction.
+        @(posedge clk);
+        #1; // The accepted instruction and register updates have settled.
         command_valid = 1'b0;
         while (command_done !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         if (accumulator !== 8'sd8) begin
             $display("ERROR after LOAD 0: expected accumulator = 8, got %0d", accumulator);
@@ -142,16 +159,20 @@ module calculator_tb;
         end
 
         // SUB 1
-        @(negedge clk);
+        @(posedge clk);
+        #1;
         while (command_ready !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         instruction   = 8'h21;
         command_valid = 1'b1;
-        @(negedge clk); // A rising edge has accepted the instruction.
+        @(posedge clk);
+        #1; // The accepted instruction and register updates have settled.
         command_valid = 1'b0;
         while (command_done !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         if (accumulator !== 8'sd5) begin
             $display("ERROR after SUB 1: expected accumulator = 5, got %0d", accumulator);
@@ -159,16 +180,20 @@ module calculator_tb;
         end
 
         // STORE 3
-        @(negedge clk);
+        @(posedge clk);
+        #1;
         while (command_ready !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         instruction   = 8'h33;
         command_valid = 1'b1;
-        @(negedge clk); // A rising edge has accepted the instruction.
+        @(posedge clk);
+        #1; // The accepted instruction and register updates have settled.
         command_valid = 1'b0;
         while (command_done !== 1'b1) begin
-            @(negedge clk);
+            @(posedge clk);
+            #1;
         end
         if (accumulator !== 8'sd5) begin
             $display("ERROR after STORE 3: expected accumulator = 5, got %0d", accumulator);
@@ -184,7 +209,8 @@ module calculator_tb;
         end
 
         // Confirm that done is a pulse and the controller becomes ready again.
-        @(negedge clk);
+        @(posedge clk);
+        #1;
         if ((command_done !== 1'b0) || (command_ready !== 1'b1)) begin
             $display("ERROR: expected ready = 1 and done = 0 after FINISH.");
             error_count = error_count + 1;
