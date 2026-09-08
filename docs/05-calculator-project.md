@@ -121,13 +121,6 @@ Every assignment in this block uses `<=`. The reset branch assigns all five stor
 
 </details>
 
-<details>
-<summary>Last resort: compare with the completed solution</summary>
-
-Only open the [completed reference solution](../solutions/calculator_solutions.sv) after making a real attempt and using the hints. To simulate it, use it instead of the starter; never add both calculator files to the same project because both define a module named `calculator`.
-
-</details>
-
 ---
 
 [← Previous: ISA refresher](04-isa-refresher.md) · [Start here](../README.md) · [Next: Simulation and testbenches →](06-simulation-testbenches.md)
