@@ -18,19 +18,17 @@ module student_testbench;
     logic signed [7:0] accumulator;
     logic command_done;
 
-    calculator dut (
-        .clk                 (clk),
-        .reset               (reset),
-        .command_valid       (command_valid),
-        .command_ready       (command_ready),
-        .instruction         (instruction),
-        .memory_read_data    (memory_read_data),
-        .memory_write_enable (memory_write_enable),
-        .memory_address      (memory_address),
-        .memory_write_data   (memory_write_data),
-        .accumulator         (accumulator),
-        .command_done        (command_done)
-    );
+    /*
+     * TODO 1: Instantiate the calculator module here and name the instance dut.
+     *
+     * 1. Start a calculator module instantiation named dut.
+     * 2. Connect every calculator port using named port connections.
+     * 3. Each port connects to the testbench signal with the same name.
+     * 4. End the final connection and close the instantiation correctly.
+     *
+     * Use the hint at the bottom of the "Write your own testbench" section in
+     * docs/06-simulation-testbenches.md if needed.
+     */
 
     data_memory memory (
         .clk          (clk),
@@ -56,13 +54,13 @@ module student_testbench;
 
     initial begin
         /*
-         * TODO 1: Initialize reset, command_valid, and instruction.
+         * TODO 2: Initialize reset, command_valid, and instruction.
          * Hold reset high for two rising edges. After the second rising edge,
          * wait #1 before releasing reset so the DUT's updates have settled.
          */
 
         /*
-         * TODO 2: Send LOAD 1. See docs/06-simulation-testbenches.md and
+         * TODO 3: Send LOAD 1. See docs/06-simulation-testbenches.md and
          * calculator_tb.sv for the pattern.
          * Wait for a rising edge, then wait #1 before checking command_ready.
          * Set instruction and raise command_valid while ready is high.
@@ -70,10 +68,10 @@ module student_testbench;
          * lower command_valid. Check command_done after rising edges and #1.
          */
 
-        // TODO 3: Repeat the same pattern for SUB 0 and STORE 4.
+        // TODO 4: Repeat the same pattern for SUB 0 and STORE 4.
 
         /*
-         * TODO 4: Check memory.memory[4] against -8'sd5 using !==.
+         * TODO 5: Check memory.memory[4] against -8'sd5 using !==.
          * Print an error and call $fatal(1, "...") if they do not match.
          * Otherwise print STUDENT TEST PASSED and call $stop.
          * Replace the temporary stop below with your check.

@@ -75,17 +75,35 @@ After changing RTL, end the loaded simulation with **Simulate → End Simulation
 
 A testbench is the simulation environment around the hardware. It provides inputs and checks outputs. Its `#5` delays and `$display` messages are simulation instructions; they don't become gates in the calculator.
 
-The scaffold provides signal declarations, module connections, and a clock. You write the reset sequence, commands, and result check. Your test should calculate **3 − 8 = −5** and store it at address 4.
+The scaffold provides signal declarations, the memory instance, and a clock. You instantiate the calculator and write the reset sequence, commands, and result check. Your test should calculate **3 − 8 = −5** and store it at address 4.
 
-1. Initialize reset, instruction, and valid so inputs don't start unknown. Keep reset high across at least two rising edges. After the second edge, wait `#1` before lowering reset.
-2. Send `LOAD 1`, wait for completion, then send `SUB 0`, and finally `STORE 4`.
-3. Follow the command handshake using only rising edges. After a rising edge, wait `#1`, check that ready is high, then present the instruction byte and valid. Keep them stable through the next rising edge so the command is accepted. Wait `#1`, lower valid, and check done after later rising edges.
-4. Check `memory.memory[4]` against `-8'sd5`. This name means “the array named memory inside the instance named memory.”
-5. Print **STUDENT TEST PASSED** only if the result is right. Otherwise use `$fatal(1, "Unexpected result");`. End a successful test with `$stop;`. This pauses the testbench without asking whether you want to finish the simulation.
+1. Instantiate the `calculator` module and name the instance `dut`. Use named port connections and connect every calculator port to the testbench signal with the same name.
+2. Initialize reset, instruction, and valid so inputs don't start unknown. Keep reset high across at least two rising edges. After the second edge, wait `#1` before lowering reset.
+3. Send `LOAD 1`, wait for completion, then send `SUB 0`, and finally `STORE 4`.
+4. Follow the command handshake using only rising edges. After a rising edge, wait `#1`, check that ready is high, then present the instruction byte and valid. Keep them stable through the next rising edge so the command is accepted. Wait `#1`, lower valid, and check done after later rising edges.
+5. Check `memory.memory[4]` against `-8'sd5`. This name means “the array named memory inside the instance named memory.”
+6. Print **STUDENT TEST PASSED** only if the result is right. Otherwise use `$fatal(1, "Unexpected result");`. End a successful test with `$stop;`. This pauses the testbench without asking whether you want to finish the simulation.
 
 Look at the provided testbench to understand the timing. `@(posedge clk);` waits for a rising edge, and the following `#1;` gives the calculator's nonblocking register updates time to settle before the testbench reads or changes signals. Inputs driven after that delay stay stable until the next rising edge, when the calculator accepts them. Recheck ready after a rising edge and `#1` before each command, even after seeing done.
 
 Use `!==` for the result check so an unknown `X` also counts as wrong. The scaffold has a timeout so a missing clock/reset/command doesn't leave the simulation running forever.
+
+<details>
+<summary>Hint: instantiating the calculator</summary>
+
+A named-port module instance begins like this:
+
+```systemverilog
+calculator dut (
+    .clk   (clk),
+    .reset (reset),
+    // Connect the remaining calculator ports here.
+);
+```
+
+The name before each pair of parentheses is a port from the `calculator` module. The name inside the parentheses is the testbench signal connected to it. Add a comma after every connection except the last one. If you're still stuck, look at the complete calculator instance in `calculator_tb.sv`.
+
+</details>
 
 Compile all, end any previous simulation, then use **Library → work → student_testbench → right-click → Simulate**. Add its signals, run all, and press Zoom Full as before. A fresh simulation reloads the provided memory. Take your waveform screenshot here: show clock, reset, instruction, accumulator, command_valid, command_ready, and command_done, with readable signal names, values, and time axis.
 
