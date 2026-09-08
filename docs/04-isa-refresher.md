@@ -62,13 +62,13 @@ Assume `memory[0] = 8`, `memory[1] = 3`, and the accumulator starts at 0. Write 
 2. Subtract the value in memory location 0.
 3. Store the result in memory location 4.
 
-For each step, write the assembly instruction, its encoded 8-bit hexadecimal value, and the accumulator value after the instruction finishes. Finally, write the value that should be stored in `memory[4]`.
+For each step, write the assembly instruction, its encoded 8-bit binary value, its hexadecimal value, and the accumulator value after the instruction finishes. Finally, write the value that should be stored in `memory[4]`.
 
-| Step | Assembly instruction | Encoded byte | Accumulator afterward |
-| --- | --- | --- | --- |
-| 1 | __________ | __________ | __________ |
-| 2 | __________ | __________ | __________ |
-| 3 | __________ | __________ | __________ |
+| Step | Assembly instruction | 8-bit binary | Hexadecimal | Accumulator afterward |
+| --- | --- | --- | --- | --- |
+| 1 | __________ | __________ | __________ | __________ |
+| 2 | __________ | __________ | __________ | __________ |
+| 3 | __________ | __________ | __________ | __________ |
 
 Final value in `memory[4]`: __________
 
@@ -77,11 +77,11 @@ Try it yourself before opening the answer key.
 <details>
 <summary>Answer key</summary>
 
-| Step | Assembly instruction | Encoded byte | Accumulator afterward |
-| --- | --- | --- | --- |
-| 1 | `LOAD 1` | `8'h01` | 3 |
-| 2 | `SUB 0` | `8'h20` | −5 |
-| 3 | `STORE 4` | `8'h34` | −5 |
+| Step | Assembly instruction | 8-bit binary | Hexadecimal | Accumulator afterward |
+| --- | --- | --- | --- | --- |
+| 1 | `LOAD 1` | `0000_0001` | `8'h01` | 3 |
+| 2 | `SUB 0` | `0010_0000` | `8'h20` | −5 |
+| 3 | `STORE 4` | `0011_0100` | `8'h34` | −5 |
 
 The final value in `memory[4]` is **−5**. STORE copies the accumulator into memory without changing the accumulator.
 
