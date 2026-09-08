@@ -77,9 +77,24 @@ module calculator (
 
     /*
      * TODO 2: Write the complete register-update always_ff block here.
-     * It must handle reset, the state register, accepted instructions,
-     * memory reads, and accumulator operations. Use the hints at the bottom
-     * of docs/05-calculator-project.md if needed.
+     *
+     * 1. Create an always_ff block that runs on the rising edge of clk.
+     * 2. Add an if statement that checks reset first.
+     * 3. When reset is high, set current_state to IDLE and set saved_opcode,
+     *    saved_address, saved_memory_data, and accumulator to 0.
+     * 4. Add an else branch for normal operation and update current_state
+     *    with next_state on every rising edge.
+     * 5. Inside the else branch, check whether command_valid and command_ready
+     *    are both high. If they are, save the opcode and address portions of
+     *    instruction in saved_opcode and saved_address.
+     * 6. When current_state is READ_MEMORY, save memory_read_data in
+     *    saved_memory_data.
+     * 7. When current_state is EXECUTE, use a case statement on saved_opcode.
+     *    LOAD copies the saved memory value into the accumulator, ADD adds it,
+     *    and SUB subtracts it. STORE and unused opcodes keep the old value.
+     * 8. Use nonblocking assignments (<=) for every register update.
+     *
+     * Use the hints at the bottom of docs/05-calculator-project.md if needed.
      */
 
 endmodule
