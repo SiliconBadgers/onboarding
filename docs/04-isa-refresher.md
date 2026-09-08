@@ -51,15 +51,42 @@ The **datapath** is the arithmetic and storage that operates on the numbers. The
 
 This calculator gets commands from the testbench. It doesn't fetch a program from instruction memory, and you don't need a program counter or branching.
 
-## Try it
+## Try it: write a tiny program
 
-Before looking at any code, write down:
+Assume `memory[0] = 8`, `memory[1] = 3`, and the accumulator starts at 0. Write three ISA instructions that:
 
-1. The hexadecimal byte for `SUB 1`.
-2. The command represented by `8'h34`.
-3. Three instruction bytes that compute `memory[1] − memory[0]` and store it at address 4.
+1. Load the value from memory location 1.
+2. Subtract the value in memory location 0.
+3. Store the result in memory location 4.
 
-Keep your answers nearby. You'll see the same ideas in the accelerator section.
+For each step, write the assembly instruction, its encoded 8-bit hexadecimal value, and the accumulator value after the instruction finishes. Finally, write the value that should be stored in `memory[4]`.
+
+| Step | Assembly instruction | Encoded byte | Accumulator afterward |
+| --- | --- | --- | --- |
+| 1 | __________ | __________ | __________ |
+| 2 | __________ | __________ | __________ |
+| 3 | __________ | __________ | __________ |
+
+Final value in `memory[4]`: __________
+
+Try it yourself before opening the answer key.
+
+<details>
+<summary>Answer key</summary>
+
+| Step | Assembly instruction | Encoded byte | Accumulator afterward |
+| --- | --- | --- | --- |
+| 1 | `LOAD 1` | `8'h01` | 3 |
+| 2 | `SUB 0` | `8'h20` | −5 |
+| 3 | `STORE 4` | `8'h34` | −5 |
+
+The final value in `memory[4]` is **−5**. STORE copies the accumulator into memory without changing the accumulator.
+
+For example, `SUB 0` uses opcode `0010` and address `0000`, producing `0010_0000`, or `8'h20`.
+
+</details>
+
+Keep this sequence nearby. You'll use the same three instructions when writing your own testbench.
 
 **Completed ECE 551? Continue to [chip design jobs and the ASIC flow](07-chip-design.md#chip-design-jobs-and-the-asic-flow).** You can skip the calculator implementation and both testbenches.
 
