@@ -9,22 +9,11 @@
 
 *Everyone continues here.*
 
-Follow one example: a company wants a chip that classifies camera images within a power and latency budget. Many people work on it at once; the arrows below show the main handoffs, not a strict sequence where one team waits for every other team.
+Follow one example: a company wants a chip that classifies camera images within a power and latency budget. The main ASIC flow is:
 
-```mermaid
-flowchart TD
-    S[Specification and architecture] --> R[RTL design and verification]
-    R --> Y[Synthesis: RTL into gates]
-    Y --> P[Physical design and signoff]
-    P --> T[Tapeout]
-    T --> F[Fabrication and packaging]
-    F --> B[Bring-up and manufacturing test]
-    R -. FPGA prototyping .-> H[Test software and system behavior]
-    H -. Feedback .-> R
-    D[DFT planning and test logic] --> Y
-    D --> B
-    A[Analog and mixed-signal design] --> P
-```
+**Specification and architecture → RTL design and verification → Synthesis → Physical design and signoff → Tapeout → Fabrication and packaging → Bring-up and manufacturing test**
+
+That is the main path, but teams do not simply finish one stage and disappear. Design verification continues throughout the project, DFT planning starts early, and analog/mixed-signal blocks are developed alongside the digital design. Teams may also test the RTL on an FPGA before tapeout. The sections below explain what each part means.
 
 ### Who does what?
 
