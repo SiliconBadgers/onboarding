@@ -1,6 +1,8 @@
-// Student starter. Write the state-transition always_comb block and the
-// register-update always_ff block using docs/05-calculator-project.md.
-// This file compiles before the TODOs are complete, but it will not pass simulation.
+/*
+ * Student starter. Write the state-transition always_comb block and the
+ * register-update always_ff block using docs/05-calculator-project.md.
+ * This file compiles before the TODOs are complete, but it will not pass simulation.
+ */
 module calculator (
     input  logic                   clk,
     input  logic                   reset,
@@ -33,8 +35,10 @@ module calculator (
     logic [3:0] saved_address;
     logic signed [7:0] saved_memory_data;
 
-    // TODO 1: Write the complete next-state always_comb block here.
-    // Use the hints at the bottom of docs/05-calculator-project.md if needed.
+    /*
+     * TODO 1: Write the complete next-state always_comb block here.
+     * Use the hints at the bottom of docs/05-calculator-project.md if needed.
+     */
 
     // Provided: outputs depend on the current state and stored values.
     always_comb begin
@@ -60,9 +64,11 @@ module calculator (
         end
     end
 
-    // TODO 2: Write the complete register-update always_ff block here.
-    // It must handle reset, the state register, accepted instructions,
-    // memory reads, and accumulator operations. Use the hints at the bottom
-    // of docs/05-calculator-project.md if needed.
+    /*
+     * TODO 2: Write the complete register-update always_ff block here.
+     * It must handle reset, the state register, accepted instructions,
+     * memory reads, and accumulator operations. Use the hints at the bottom
+     * of docs/05-calculator-project.md if needed.
+     */
 
 endmodule
