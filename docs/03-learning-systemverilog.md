@@ -1,5 +1,8 @@
 # Learning Systemverilog
 
+> [!IMPORTANT]
+> If you're viewing this in VS Code, press **Ctrl+Shift+V** to display this document correctly.
+
 [Start here](../README.md) · Document 3 of 10
 
 ## What is a chip?

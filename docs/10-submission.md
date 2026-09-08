@@ -1,5 +1,8 @@
 # Submission
 
+> [!IMPORTANT]
+> If you're viewing this in VS Code, press **Ctrl+Shift+V** to display this document correctly.
+
 [Start here](../README.md) · Document 10 of 10
 
 Only open the final Google Form after completing your path. **Get the submission link from Simon Richter on Slack**; it will be added here when the form is published.

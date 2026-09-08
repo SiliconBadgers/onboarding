@@ -1,5 +1,8 @@
 # Accelerator full stack
 
+> [!IMPORTANT]
+> If you're viewing this in VS Code, press **Ctrl+Shift+V** to display this document correctly.
+
 [Start here](../README.md) · Document 9 of 10
 
 *Everyone. Keep the same 784 → 128 → 10 example in mind.*

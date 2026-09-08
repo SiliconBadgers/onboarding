@@ -1,5 +1,8 @@
 # Chip design
 
+> [!IMPORTANT]
+> If you're viewing this in VS Code, press **Ctrl+Shift+V** to display this document correctly.
+
 [Start here](../README.md) · Document 7 of 10
 
 ## Chip design jobs and the ASIC flow

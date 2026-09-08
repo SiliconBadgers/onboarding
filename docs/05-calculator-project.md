@@ -1,5 +1,8 @@
 # Calculator project
 
+> [!IMPORTANT]
+> If you're viewing this in VS Code, press **Ctrl+Shift+V** to display this document correctly.
+
 [Start here](../README.md) · Document 5 of 10
 
 *Beginner path. Edit only `rtl/calculator.sv` for this part.*

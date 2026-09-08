@@ -1,5 +1,8 @@
 # AI inference fundamentals
 
+> [!IMPORTANT]
+> If you're viewing this in VS Code, press **Ctrl+Shift+V** to display this document correctly.
+
 [Start here](../README.md) · Document 8 of 10
 
 *Everyone. Work through the numbers; no Python installation or coding is needed.*

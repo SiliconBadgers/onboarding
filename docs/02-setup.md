@@ -1,7 +1,7 @@
 # Setup
 
 > [!IMPORTANT]
-> **Viewing these docs in VS Code? Press Ctrl+Shift+V!** Open a README or Docs `.md` file, then press **Ctrl+Shift+V** to view it with the formatting displayed correctly instead of raw Markdown text.
+> If you're viewing this in VS Code, press **Ctrl+Shift+V** to display this document correctly.
 
 [Start here](../README.md) · Document 2 of 10
 

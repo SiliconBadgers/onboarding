@@ -1,5 +1,8 @@
 # Simulation and testbenches
 
+> [!IMPORTANT]
+> If you're viewing this in VS Code, press **Ctrl+Shift+V** to display this document correctly.
+
 [Start here](../README.md) · Document 6 of 10
 
 ### Run QuestaSim/ModelSim
