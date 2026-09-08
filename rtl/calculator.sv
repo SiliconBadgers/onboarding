@@ -34,7 +34,7 @@ module calculator (
     logic signed [7:0] saved_memory_data;
 
     // TODO 1: Write the complete next-state always_comb block here.
-    // Use the state diagram and hints in docs/05-calculator-project.md.
+    // Use the hints at the bottom of docs/05-calculator-project.md if needed.
 
     // Provided: outputs depend on the current state and stored values.
     always_comb begin
@@ -62,6 +62,7 @@ module calculator (
 
     // TODO 2: Write the complete register-update always_ff block here.
     // It must handle reset, the state register, accepted instructions,
-    // memory reads, and accumulator operations. The project guide has hints.
+    // memory reads, and accumulator operations. Use the hints at the bottom
+    // of docs/05-calculator-project.md if needed.
 
 endmodule
