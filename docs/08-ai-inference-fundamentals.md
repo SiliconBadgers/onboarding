@@ -7,6 +7,9 @@
 
 *Everyone. Work through the numbers; no Python installation or coding is needed.*
 
+> [!TIP]
+> **Watch this first:** [But what is a neural network?](https://www.youtube.com/watch?v=aircAruvnKk) by 3Blue1Brown. It uses 28×28 handwritten digits to introduce neurons, layers, weights, biases, and activations—the same ideas we use below.
+
 ### Before you read
 
 This doc is complicated. You will NOT understand everything the first time. That's ok! Use AI to dumb things down, and if you're still stuck feel free to ask one of the

@@ -7,6 +7,12 @@
 
 *Everyone. Keep the same 784 → 128 → 10 example in mind.*
 
+> [!TIP]
+> **Watch this first:** [Scaling AI with Google Cloud's TPUs](https://www.youtube.com/watch?v=8zBaa20mvoc) by Google Cloud Tech. It shows how specialized matrix-multiplication hardware, memory, and software fit together in a real AI accelerator.
+
+> [!NOTE]
+> **Fun fact:** Google's TPU started right here in Madison. Google's Madison office did core early pathfinding that helped seed the first TPU before the project grew into a much larger effort across Google. [Read more about the Madison team's work.](https://www.wpr.org/news/madison-google-office-data-center-chip-ai)
+
 ```mermaid
 flowchart LR
     M[Trained model] --> C[Compiler and quantization]
