@@ -37,6 +37,17 @@ module calculator (
 
     /*
      * TODO 1: Write the complete next-state always_comb block here.
+     *
+     * 1. Create an always_comb block.
+     * 2. At the beginning of the block, make next_state default to current_state.
+     * 3. Add a case statement that checks current_state.
+     * 4. Add branches for IDLE, READ_MEMORY, EXECUTE, and FINISH.
+     * 5. In IDLE, check command_valid. When it is high, use another case
+     *    statement to check the opcode in instruction[7:4].
+     * 6. Use the state diagram in the project guide to choose next_state for
+     *    each opcode and each current state.
+     * 7. Add a default branch that sends the calculator back to IDLE.
+     *
      * Use the hints at the bottom of docs/05-calculator-project.md if needed.
      */
 
