@@ -1,5 +1,6 @@
-// Student starter. Complete TODO 1, TODO 2, and TODO 3 using docs/05-calculator-project.md.
-// This file compiles before the TODOs are complete; it will not pass simulation.
+// Student starter. Write the state-transition always_comb block and the
+// register-update always_ff block using docs/05-calculator-project.md.
+// This file compiles before the TODOs are complete, but it will not pass simulation.
 module calculator (
     input  logic                   clk,
     input  logic                   reset,
@@ -32,33 +33,8 @@ module calculator (
     logic [3:0] saved_address;
     logic signed [7:0] saved_memory_data;
 
-    always_comb begin
-        next_state = current_state;
-
-        // TODO 1: Complete the transitions described in docs/05-calculator-project.md.
-        // IDLE: if a command is valid, inspect instruction[7:4].
-        //       LOAD/ADD/SUB need READ_MEMORY; STORE goes to EXECUTE;
-        //       an unused opcode goes directly to FINISH.
-        // READ_MEMORY -> EXECUTE -> FINISH -> IDLE.
-        // Keep the default branch for recovery from an invalid state.
-        case (current_state)
-            IDLE: begin
-                next_state = IDLE;           // Replace this placeholder.
-            end
-            READ_MEMORY: begin
-                next_state = READ_MEMORY;    // Replace this placeholder.
-            end
-            EXECUTE: begin
-                next_state = EXECUTE;        // Replace this placeholder.
-            end
-            FINISH: begin
-                next_state = FINISH;         // Replace this placeholder.
-            end
-            default: begin
-                next_state = IDLE;
-            end
-        endcase
-    end
+    // TODO 1: Write the complete next-state always_comb block here.
+    // Use the state diagram and hints in docs/05-calculator-project.md.
 
     // Provided: outputs depend on the current state and stored values.
     always_comb begin
@@ -84,34 +60,8 @@ module calculator (
         end
     end
 
-    always_ff @(posedge clk) begin
-        if (reset) begin
-            current_state     <= IDLE;
-            saved_opcode      <= 4'b0000;
-            saved_address     <= 4'd0;
-            saved_memory_data <= 8'sd0;
-            accumulator       <= 8'sd0;
-        end
-        else begin
-            current_state <= next_state;
-
-            // Provided: split and save an accepted instruction.
-            // Later input changes must not change the command being executed.
-            if (command_valid && command_ready) begin
-                saved_opcode  <= instruction[7:4];
-                saved_address <= instruction[3:0];
-            end
-
-            // TODO 2: At the end of READ_MEMORY, save memory_read_data.
-            // Use an if statement and a nonblocking assignment (<=).
-
-            // TODO 3: In EXECUTE, use a case statement on saved_opcode.
-            // LOAD copies saved_memory_data into the accumulator.
-            // ADD adds saved_memory_data to the accumulator.
-            // SUB subtracts saved_memory_data from the accumulator.
-            // STORE and unused opcodes leave the accumulator unchanged.
-            // The provided output logic already handles writing memory.
-        end
-    end
+    // TODO 2: Write the complete register-update always_ff block here.
+    // It must handle reset, the state register, accepted instructions,
+    // memory reads, and accumulator operations. The project guide has hints.
 
 endmodule

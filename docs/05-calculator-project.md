@@ -4,7 +4,7 @@
 
 *Beginner path. Edit only `rtl/calculator.sv` for this part.*
 
-Your job is to finish the calculator's state transitions, memory-read register, and accumulator updates. The memory and instruction interface are already provided. The starting code is valid SystemVerilog, but it is intentionally incomplete; it will not pass the testbench yet.
+Your job is to write a complete next-state `always_comb` block and a complete register-update `always_ff` block. The module ports, state names, internal signals, and output logic are provided. The starting code is valid SystemVerilog, but it is intentionally incomplete and will not pass the testbench yet.
 
 ## The provided memory
 
@@ -30,7 +30,7 @@ The `initial` block preloads this teaching memory for simulation. ASIC memories 
 
 A command is accepted **on a rising edge when both `command_valid` and `command_ready` are 1**. While the calculator is busy, ready is 0. Keep the instruction stable until acceptance, then lower valid so it isn't accepted again later.
 
-The provided interface handles the ready/done signals and saves the opcode and address. Read those blocks, but keep your changes in the TODOs.
+The provided output block handles `command_ready`, `command_done`, and memory writes. Read it to see how the current state controls the interface. Your two blocks will decide the next state and update all stored values.
 
 ## The four states
 
@@ -53,17 +53,80 @@ flowchart LR
 
 For `LOAD 0`, edge 1 accepts the instruction, edge 2 captures the number 8, and edge 3 copies 8 into the accumulator. Done is high after edge 3; edge 4 returns the calculator to idle. `STORE` skips the read, so its write happens at edge 2 instead.
 
-## Finish the TODOs
+## Write the two blocks
 
-1. **State transitions.** Use the diagram to finish the `case` statement in the first `always_comb`. Stay idle without a command. Reading operations go to `READ_MEMORY`; STORE goes straight to `EXECUTE`; unused opcodes go to `FINISH`.
-2. **Capture the memory value.** In the clocked block, when the current state is `READ_MEMORY`, save `memory_read_data` into `saved_memory_data`. This is a register update, so use `<=`.
-3. **Accumulator operations.** In `EXECUTE`, use the saved opcode. LOAD copies the saved memory value, ADD adds it to the accumulator, and SUB subtracts it. STORE keeps the accumulator unchanged; the provided memory-write logic handles the write.
+### TODO 1: `always_comb`
+
+Write the whole next-state block yourself. Give `next_state` a default value first, then use `case (current_state)` to implement the diagram. Stay in `IDLE` without a valid command. LOAD, ADD, and SUB go to `READ_MEMORY`; STORE goes directly to `EXECUTE`; unused opcodes go to `FINISH`. The other states advance in order and the `default` state recovers to `IDLE`.
+
+### TODO 2: `always_ff`
+
+Write one complete `always_ff @(posedge clk)` block. It needs to:
+
+1. On reset, set `current_state` to `IDLE` and set `saved_opcode`, `saved_address`, `saved_memory_data`, and `accumulator` to 0.
+2. When not resetting, copy `next_state` into `current_state` every rising edge.
+3. When a command is accepted, save `instruction[7:4]` as the opcode and `instruction[3:0]` as the address. A command is accepted when valid and ready are both 1.
+4. In `READ_MEMORY`, capture `memory_read_data` into `saved_memory_data`.
+5. In `EXECUTE`, use the saved opcode to update the accumulator. LOAD copies the saved memory value, ADD adds it, and SUB subtracts it. STORE and unused opcodes leave the accumulator unchanged; the provided output logic handles the memory write.
 
 Start by implementing LOAD and following it through the waveform. Then add ADD and SUB. Finally check that STORE and the return to idle work. The full provided test needs all four operations, so intermediate failures are expected.
 
-Leave the reset, module ports, and supplied interface logic in place. Don't add parameters, local parameters, helper functions, or tasks. The provided `enum` just gives readable names to the four states.
+Leave the module ports, signal declarations, state names, and supplied output block in place. Don't add parameters, local parameters, helper functions, or tasks. The provided `enum` just gives readable names to the four states.
 
-A [completed reference solution](../solutions/calculator_solutions.sv) is available if you need to compare your work. Try the project yourself first. To simulate the solution, use it instead of the starter; never add both calculator files to the same project.
+## Stuck? Open these hints one at a time
+
+Before asking AI to write the code, make an attempt, compile it, and read the first error or failed test. Then open only the next hint you need. You can also message Simon on Slack or ask AI to **explain a specific concept or error** without generating the whole block.
+
+<details>
+<summary>Hint 1: Shape of the two blocks</summary>
+
+The combinational block should have this overall shape:
+
+```systemverilog
+always_comb begin
+    next_state = current_state;
+
+    case (current_state)
+        // One branch for each state, plus default.
+    endcase
+end
+```
+
+The clocked block should have this overall shape:
+
+```systemverilog
+always_ff @(posedge clk) begin
+    if (reset) begin
+        // Reset every stored value.
+    end
+    else begin
+        // Update state and the other registers when required.
+    end
+end
+```
+
+</details>
+
+<details>
+<summary>Hint 2: Getting out of IDLE</summary>
+
+Inside the `IDLE` branch, first check `command_valid`. If it is 1, use another `case` on `instruction[7:4]`. Opcodes `0000`, `0001`, and `0010` read memory. Opcode `0011` stores. Everything else is unused.
+
+</details>
+
+<details>
+<summary>Hint 3: What belongs in the clocked block?</summary>
+
+Every assignment in this block uses `<=`. The reset branch assigns all five stored values. In the non-reset branch, update `current_state` every edge, save the instruction only when `command_valid && command_ready`, capture memory only in `READ_MEMORY`, and change the accumulator only in `EXECUTE` for LOAD, ADD, or SUB.
+
+</details>
+
+<details>
+<summary>Last resort: compare with the completed solution</summary>
+
+Only open the [completed reference solution](../solutions/calculator_solutions.sv) after making a real attempt and using the hints. To simulate it, use it instead of the starter; never add both calculator files to the same project because both define a module named `calculator`.
+
+</details>
 
 ---
 
