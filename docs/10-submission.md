@@ -5,7 +5,7 @@
 
 [Start here](../README.md) · Document 10 of 10
 
-Only open the final Google Form after completing your path. **Get the submission link from Simon Richter on Slack**; it will be added here when the form is published.
+Only open the [final Google Form](https://forms.gle/9KCqvGVayRVDuWVt8) after completing your path.
 
 The form asks for your **first and last name in one textbox**, your **UW email**, and which path you completed.
 

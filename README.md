@@ -16,7 +16,7 @@ We assume you already know binary, logic gates, registers, and state machines.
 | Haven't completed ECE 551 | Read documents 2–10 in order, including HDLBits, the calculator, and your own small testbench. |
 | Completed ECE 551 | Read this introduction, then documents **4 → 7 → 8 → 9 → 10** below. Skip the HDLBits and coding exercises; optionally revisit them. |
 
-Submit the Google Form **at the end**, after finishing your path.
+Submit the [Google Form](https://forms.gle/9KCqvGVayRVDuWVt8) **at the end**, after finishing your path.
 
 **Stuck? Message Simon Richter, our Onboarding Chair, on Slack.** Include what you tried and a screenshot or error message when useful.
 
