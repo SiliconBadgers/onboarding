@@ -44,7 +44,7 @@ Select `calculator_tb`, not `calculator` or `student_testbench` for this first t
 3. Right-click the selection and choose **Add Wave → Selected Signals** (some versions label this **Add to Wave**). The signals should appear in the **Wave** window.
 4. Expand `calculator_tb` in the Sim pane and select `dut`. Add `current_state` from Objects too.
 5. In Wave, right-click `instruction` and choose **Radix → Hexadecimal**. Set the accumulator and memory data signals to **Decimal/signed decimal**, so negative results show as negative numbers. Keep address unsigned.
-6. Click **Run All**, or type `run -all` in the Transcript and press Enter. The provided testbench pauses itself when it finishes, so QuestaSim/ModelSim should not ask whether you want to finish the simulation.
+6. Click **Run All**, or type `run -all` in the Transcript and press Enter. The provided testbench pauses itself when it finishes. If QuestaSim/ModelSim asks, **“Are you sure you want to finish?”**, just click **No**.
 7. Click inside the **Wave** window, then press the **Zoom Full magnifying-glass button**. Hover over the magnifying-glass icons until the tooltip says **Zoom Full**; a plain Zoom In button won't fit the whole run. You can also type `wave zoom full`.
 
 If a signal is missing because it was optimized away, enter `quit -sim`, then `vsim -voptargs=+acc work.calculator_tb`, and add the signals again before running.
