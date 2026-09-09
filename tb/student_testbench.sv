@@ -55,33 +55,69 @@ module student_testbench;
     initial begin
         /*
          * TODO 2: Initialize reset, command_valid, and instruction.
-         * Hold reset high for two rising edges. After the second rising edge,
-         * wait #1 before releasing reset so the DUT's updates have settled.
+         *
+         * 1. Set reset to 1.
+         * 2. Set command_valid to 0 so no command is sent during reset.
+         * 3. Set instruction to 8'h00 so it does not begin as an unknown X.
+         * 4. Wait for two rising clock edges using repeat and @(posedge clk).
+         * 5. Wait #1 after the second edge so register updates settle.
+         * 6. Set reset to 0.
          */
 
         /*
-         * TODO 3: Send LOAD 1. See docs/06-simulation-testbenches.md and
-         * calculator_tb.sv for the pattern.
-         * Wait for a rising edge, then wait #1 before checking command_ready.
-         * Set instruction and raise command_valid while ready is high.
-         * Keep them stable through the next rising edge, wait #1, and then
-         * lower command_valid. Check command_done after rising edges and #1.
+         * TODO 3: Send LOAD 1, encoded as 8'h01.
+         *
+         * Use this same command pattern for every instruction:
+         * 1. Wait for a rising edge, then wait #1.
+         * 2. If command_ready is not 1 yet, keep waiting for rising edges and
+         *    #1 delays until it becomes 1.
+         * 3. Set instruction to 8'h01 and set command_valid to 1.
+         * 4. Keep both inputs unchanged through the next rising edge. That is
+         *    the edge where valid and ready are both 1, so LOAD is accepted.
+         * 5. Wait #1 after that edge, then set command_valid back to 0.
+         * 6. While command_done is not 1, wait for another rising edge and
+         *    then #1 before checking it again.
+         * 7. Once done is 1, LOAD has finished and accumulator should be 3.
+         *
+         * See calculator_tb.sv if you need to see this pattern as code.
          */
 
         /*
-         * TODO 4: Repeat the same pattern for ADDI -2 and STORE 4.
-         * ADDI -2 is 8'h4E because opcode 0100 is followed by the signed
-         * four-bit immediate 1110. STORE 4 is 8'h34.
+         * TODO 4: Send ADDI -2, then STORE 4.
+         *
+         * ADDI -2:
+         * 1. Wait until command_ready is 1 using rising edges and #1 delays.
+         * 2. Present 8'h4E and raise command_valid.
+         * 3. Keep them stable through the next rising edge, wait #1, and lower
+         *    command_valid.
+         * 4. Wait through rising edges and #1 delays until command_done is 1.
+         * 5. The accumulator should now contain 1 because 3 + (-2) = 1.
+         *
+         * STORE 4:
+         * 6. Wait until command_ready is 1 again.
+         * 7. Present 8'h34 and raise command_valid.
+         * 8. Keep them stable through the next rising edge, wait #1, and lower
+         *    command_valid.
+         * 9. Wait through rising edges and #1 delays until command_done is 1.
+         *
+         * Encoding reminder: 8'h4E is opcode 0100 followed by signed immediate
+         * 1110 (-2). 8'h34 is STORE opcode 0011 followed by address 0100 (4).
          */
 
         /*
-         * TODO 5: After STORE raises command_done, wait for the next rising
-         * edge and then #1. Check that command_done is back to 0 and
-         * command_ready is back to 1, proving done lasted one cycle.
-         * Then check memory.memory[4] against 8'sd1 using !==.
-         * Print an error and call $fatal(1, "...") if they do not match.
-         * Otherwise print STUDENT TEST PASSED and call $stop.
-         * Replace the temporary stop below with your check.
+         * TODO 5: Check the handshake and stored result.
+         *
+         * 1. At this point command_done is 1 because STORE just finished.
+         * 2. Wait for one more rising edge and then #1.
+         * 3. Check that command_done is now 0 and command_ready is now 1. If
+         *    either value is wrong, call $fatal with a helpful message.
+         * 4. Check memory.memory[4] against 8'sd1 using !==. The !== operator
+         *    also treats an unknown X as a failure.
+         * 5. If the memory value is wrong, call $fatal with the expected and
+         *    actual values.
+         * 6. If every check passed, print STUDENT TEST PASSED with $display.
+         * 7. Call $stop so Run All pauses without a finish confirmation.
+         * 8. Delete the temporary $fatal line below after adding your checks.
          */
         $fatal(1, "TODO: complete student_testbench.sv before running it.");
     end

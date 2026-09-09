@@ -100,34 +100,49 @@ In `always_ff`, leaving a register unassigned in a branch means **keep its value
 
 A literal like `8'd11` means “eight bits, decimal 11.” `8'h11` means “eight bits, hexadecimal 11,” which is decimal 17. `8'sd11` is signed decimal 11; write negative five as `-8'sd5`. The calculator uses signed 8-bit data, so its range is −128 through 127. Overflow wraps: 127 + 1 becomes −128.
 
-## Try it: a live value and a saved value
+## Try it: read the code and determine the outputs
 
-Imagine a display that switches between two numbers, plus a register that saves the displayed number when you ask it to. You do **not** need to write any code for this exercise.
+Do **not** write or simulate any code for this exercise. Read these two blocks and work out what `live_value` and `saved_value` contain after each event below.
 
-- `live_value` shows `a` when `select_b` is 0 and `b` when `select_b` is 1. It responds to input changes without waiting for a clock edge.
-- On each rising clock edge, `saved_value` becomes 0 if `reset` is high. Otherwise, if `save` is high, it captures `live_value`. If neither is high, it keeps its previous value. Reset takes priority over save.
+```systemverilog
+logic [7:0] a, b;
+logic       select_b, save, reset, clk;
+logic [7:0] live_value, saved_value;
 
-Copy the timing chart below onto paper or into your notes. Each column shows the signal values immediately **after** that event. A dash means there was no clock edge. Fill in the two blank waveform rows using a number in every box.
+always_comb begin
+    live_value = a;
 
-| Signal / event | 1: rising edge | 2: reset ↓, save ↑ | 3: rising edge | 4: select_b ↑ | 5: save ↓, rising edge | 6: reset ↑ | 7: rising edge | 8: reset ↓, select_b ↓, a = 6 |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Clock edge? | ↑ | — | ↑ | — | ↑ | — | ↑ | — |
-| `a` | 3 | 3 | 3 | 3 | 3 | 3 | 3 | 6 |
-| `b` | 9 | 9 | 9 | 9 | 9 | 9 | 9 | 9 |
-| `select_b` | 0 | 0 | 0 | 1 | 1 | 1 | 1 | 0 |
-| `save` | 0 | 1 | 1 | 1 | 0 | 0 | 0 | 0 |
-| `reset` | 1 | 0 | 0 | 0 | 0 | 1 | 1 | 0 |
-| **Fill in: `live_value`** | ___ | ___ | ___ | ___ | ___ | ___ | ___ | ___ |
-| **Fill in: `saved_value`** | ___ | ___ | ___ | ___ | ___ | ___ | ___ | ___ |
+    if (select_b) begin
+        live_value = b;
+    end
+end
 
-Remember that reset is **synchronous**, so it only changes `saved_value` on a rising edge.
+always_ff @(posedge clk) begin
+    if (reset) begin
+        saved_value <= 8'd0;
+    end
+    else if (save) begin
+        saved_value <= live_value;
+    end
+end
+```
 
-After filling in the waveform, answer these questions:
+Work through these events in order. Inputs keep their previous values unless an event changes them. After each event, write down both outputs as `live_value = ___` and `saved_value = ___`.
 
-1. Which output changes immediately at event 4, and why?
-2. Why doesn't `saved_value` reset at event 6?
-3. Which output would be created with `always_comb`, and which would be created with `always_ff`?
-4. If `select_b` changes while `save` is 0, can `live_value` change? Can `saved_value` change without a rising edge?
+1. Start with `a = 4`, `b = 9`, `select_b = 0`, `save = 0`, and `reset = 1`. A rising clock edge occurs.
+2. Between clock edges, lower `reset` to 0 and raise `save` to 1. No clock edge occurs.
+3. A rising clock edge occurs.
+4. Between clock edges, change `select_b` to 1. No clock edge occurs.
+5. Still between clock edges, change `b` to 6. No clock edge occurs.
+6. A rising clock edge occurs while `save` is still 1.
+7. Between clock edges, lower `save` to 0, change `select_b` to 0, and change `a` to 12.
+8. One more rising clock edge occurs while `save` is 0.
+
+Then explain:
+
+1. Why can `live_value` change in events 4, 5, and 7 without a clock edge?
+2. Why does `saved_value` keep its old value at the final rising edge?
+3. What bug could happen if the first `live_value = a;` assignment were removed?
 
 ---
 
