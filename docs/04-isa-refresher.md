@@ -9,7 +9,7 @@
 
 An **instruction set architecture (ISA)** is the agreement about which instructions hardware understands and what each instruction does. The bits don't do anything by themselves: a decoder recognizes them, and control logic tells registers, arithmetic, and memory what to do.
 
-Our calculator understands four operations and has one working register, the **accumulator**. Its data memory has 16 locations, each holding one signed byte.
+Our calculator understands five operations and has one working register, the **accumulator**. Its data memory has 16 locations, each holding one signed byte.
 
 | Instruction | Opcode bits | Action |
 | --- | --- | --- |
@@ -17,17 +17,18 @@ Our calculator understands four operations and has one working register, the **a
 | `ADD address` | `0001` | `accumulator + memory[address] → accumulator` |
 | `SUB address` | `0010` | `accumulator − memory[address] → accumulator` |
 | `STORE address` | `0011` | `accumulator → memory[address]` |
+| `ADDI immediate` | `0100` | `accumulator + signed immediate → accumulator` |
 
 Each instruction is **one byte**:
 
 ```text
        bits 7 6 5 4       bits 3 2 1 0
       ┌────────────┬──────────────────┐
-      │   opcode   │  memory address  │
+      │   opcode   │     operand      │
       └────────────┴──────────────────┘
 ```
 
-Four address bits select locations 0–15. The high four bits allow 16 possible opcodes, but we define only four. For this calculator, other opcodes finish without changing the accumulator or memory.
+For LOAD, ADD, SUB, and STORE, the lower four operand bits are a memory address from 0–15. For ADDI, those same bits are a signed four-bit immediate from −8 to 7. The high four bits allow 16 possible opcodes, but we define only five. Other opcodes finish without changing the accumulator or memory.
 
 Given `memory[0] = 8` and `memory[1] = 3`:
 
@@ -36,12 +37,15 @@ Given `memory[0] = 8` and `memory[1] = 3`:
 | `LOAD 0` | `0000_0000` | `8'h00` | Accumulator becomes 8 |
 | `ADD 1` | `0001_0001` | `8'h11` | Accumulator becomes 11 |
 | `STORE 2` | `0011_0010` | `8'h32` | Memory location 2 becomes 11 |
+| `ADDI -2` | `0100_1110` | `8'h4E` | Accumulator becomes 9 |
 
 Notice that `8'h11` is an encoded instruction, not the arithmetic result 11.
 
+The immediate `1110` represents −2 in four-bit two's complement. Before adding it to the eight-bit accumulator, the hardware **sign-extends** it by copying its leftmost bit: `1110` becomes `1111_1110`, which is still −2 as an eight-bit number.
+
 ## How the RTL implements it
 
-The provided decoder splits `instruction[7:4]` from `instruction[3:0]`. When a command is accepted, registers save those fields so later input changes can't change the command being executed.
+The decoder splits the opcode in `instruction[7:4]` from the operand in `instruction[3:0]`. When a command is accepted, registers save those fields so later input changes can't change the command being executed.
 
 The controller selects an action based on the saved opcode. For example, `0001` selects addition and enables an accumulator update; `0011` enables a memory write instead. You can think of the path as:
 

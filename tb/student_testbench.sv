@@ -1,7 +1,7 @@
 `timescale 1ns/1ps
 
 // Complete this file after the supplied calculator_tb passes.
-// Goal: LOAD 1, SUB 0, STORE 4 should put 3 - 8 = -5 into memory[4].
+// Goal: LOAD 1, ADDI -2, STORE 4 should put 3 + (-2) = 1 into memory[4].
 module student_testbench;
 
     logic clk;
@@ -68,10 +68,17 @@ module student_testbench;
          * lower command_valid. Check command_done after rising edges and #1.
          */
 
-        // TODO 4: Repeat the same pattern for SUB 0 and STORE 4.
+        /*
+         * TODO 4: Repeat the same pattern for ADDI -2 and STORE 4.
+         * ADDI -2 is 8'h4E because opcode 0100 is followed by the signed
+         * four-bit immediate 1110. STORE 4 is 8'h34.
+         */
 
         /*
-         * TODO 5: Check memory.memory[4] against -8'sd5 using !==.
+         * TODO 5: After STORE raises command_done, wait for the next rising
+         * edge and then #1. Check that command_done is back to 0 and
+         * command_ready is back to 1, proving done lasted one cycle.
+         * Then check memory.memory[4] against 8'sd1 using !==.
          * Print an error and call $fatal(1, "...") if they do not match.
          * Otherwise print STUDENT TEST PASSED and call $stop.
          * Replace the temporary stop below with your check.

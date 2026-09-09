@@ -9,7 +9,7 @@
 
 ## Mac Tutorial
 
-If you're on Mac you will have to remote access a CAE computer to get access to QuestaSim. Don't worry! It's actually super simple and will take 2 minutes max. Here's a [tutorial](https://mediaspace.wisc.edu/media/QuestaSim+for+Mac/1_u631yf90)!
+If you're on Mac you will have to remote access a CAE computer to get access to QuestaSim. Don't worry—it's pretty simple. Here's a [tutorial](https://mediaspace.wisc.edu/media/QuestaSim+for+Mac/1_u631yf90)!
 
 ## Stuck?
 
@@ -54,6 +54,7 @@ The provided test includes these calculations:
 ```text
 LOAD 0 → ADD 1 → STORE 2       memory[2] should become 11
 LOAD 0 → SUB 1 → STORE 3       memory[3] should become 5
+ADDI -2 → STORE 4              memory[4] should become 3
 ```
 
 A completed calculator should print **ALL TESTS PASSED**. A timeout usually means the state machine never returned the expected ready/done signal. The untouched starter is expected to time out; it must not print a pass.
@@ -67,6 +68,7 @@ Find a rising edge where valid and ready are both high. That is instruction acce
 - STORE raises `memory_write_enable`, and the accumulator stays at 11.
 - Done stays high for one cycle, then ready returns.
 - The second calculation leaves the accumulator at 5.
+- ADDI uses the signed immediate −2, changing the accumulator from 5 to 3 without reading memory.
 
 Take a screenshot of **ALL TESTS PASSED**. You'll capture the waveform submission from your own testbench in [Write your own testbench](#write-your-own-testbench).
 
@@ -78,14 +80,15 @@ After changing RTL, end the loaded simulation with **Simulate → End Simulation
 
 A testbench is the simulation environment around the hardware. It provides inputs and checks outputs. Its `#5` delays and `$display` messages are simulation instructions; they don't become gates in the calculator.
 
-The scaffold provides signal declarations, the memory instance, and a clock. You instantiate the calculator and write the reset sequence, commands, and result check. Your test should calculate **3 − 8 = −5** and store it at address 4.
+The scaffold provides signal declarations, the memory instance, and a clock. You instantiate the calculator and write the reset sequence, commands, and result checks. Your test should calculate **3 + (−2) = 1**, store it at address 4, and verify that done lasts one cycle.
 
 1. Instantiate the `calculator` module and name the instance `dut`. Use named port connections and connect every calculator port to the testbench signal with the same name.
 2. Initialize reset, instruction, and valid so inputs don't start unknown. Keep reset high across at least two rising edges. After the second edge, wait `#1` before lowering reset.
-3. Send `LOAD 1`, wait for completion, then send `SUB 0`, and finally `STORE 4`.
+3. Send `LOAD 1`, wait for completion, then send `ADDI -2`, and finally `STORE 4`. ADDI −2 is encoded as `0100_1110`, or `8'h4E`.
 4. Follow the command handshake using only rising edges. After a rising edge, wait `#1`, check that ready is high, then present the instruction byte and valid. Keep them stable through the next rising edge so the command is accepted. Wait `#1`, lower valid, and check done after later rising edges.
-5. Check `memory.memory[4]` against `-8'sd5`. This name means “the array named memory inside the instance named memory.”
-6. Print **STUDENT TEST PASSED** only if the result is right. Otherwise use `$fatal(1, "Unexpected result");`. End a successful test with `$stop;`. This pauses the testbench without asking whether you want to finish the simulation.
+5. After STORE raises done, wait for the next rising edge and then `#1`. Check that done returned to 0 and ready returned to 1. Since you already observed done high, this proves it was a one-cycle pulse.
+6. Check `memory.memory[4]` against `8'sd1`. This name means “the array named memory inside the instance named memory.”
+7. Print **STUDENT TEST PASSED** only if every check is right. Otherwise use `$fatal(1, "Unexpected result");`. End a successful test with `$stop;`. This pauses the testbench without asking whether you want to finish the simulation.
 
 Look at the provided testbench to understand the timing. `@(posedge clk);` waits for a rising edge, and the following `#1;` gives the calculator's nonblocking register updates time to settle before the testbench reads or changes signals. Inputs driven after that delay stay stable until the next rising edge, when the calculator accepts them. Recheck ready after a rising edge and `#1` before each command, even after seeing done.
 

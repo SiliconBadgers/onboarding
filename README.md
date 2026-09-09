@@ -28,6 +28,8 @@ We strongly recommend using AI to explain things when you're confused. It's extr
 
 For the coding exercises, try to use minimal AI and write most of the code yourself. Having AI write everything might get you through onboarding, but you'll struggle when we start building the actual project. We can't control how you use it, but if you want to be an active member, contribute to the club, and eventually join leadership, it's to your advantage to understand what you're building and why it works.
 
+**Turn off GitHub Copilot code suggestions while completing the SystemVerilog exercises.** You can still use AI chat to ask for explanations, but the editor should not autocomplete the code for you. The [Setup guide](docs/02-setup.md) shows how.
+
 ## Reading order
 
 | # | Document | Who reads it? |

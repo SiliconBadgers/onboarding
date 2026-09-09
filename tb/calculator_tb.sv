@@ -208,6 +208,51 @@ module calculator_tb;
             $display("PASS: 8 - 3 = %0d", memory.memory[3]);
         end
 
+        // ADDI -2: 5 + (-2) = 3. The lower nibble 1110 is signed -2.
+        @(posedge clk);
+        #1;
+        while (command_ready !== 1'b1) begin
+            @(posedge clk);
+            #1;
+        end
+        instruction   = 8'h4E;
+        command_valid = 1'b1;
+        @(posedge clk);
+        #1;
+        command_valid = 1'b0;
+        while (command_done !== 1'b1) begin
+            @(posedge clk);
+            #1;
+        end
+        if (accumulator !== 8'sd3) begin
+            $display("ERROR after ADDI -2: expected accumulator = 3, got %0d", accumulator);
+            error_count = error_count + 1;
+        end
+
+        // STORE 4
+        @(posedge clk);
+        #1;
+        while (command_ready !== 1'b1) begin
+            @(posedge clk);
+            #1;
+        end
+        instruction   = 8'h34;
+        command_valid = 1'b1;
+        @(posedge clk);
+        #1;
+        command_valid = 1'b0;
+        while (command_done !== 1'b1) begin
+            @(posedge clk);
+            #1;
+        end
+        if (memory.memory[4] !== 8'sd3) begin
+            $display("ERROR: expected memory[4] = 3, got %0d", memory.memory[4]);
+            error_count = error_count + 1;
+        end
+        else begin
+            $display("PASS: 5 + (-2) = %0d", memory.memory[4]);
+        end
+
         // Confirm that done is a pulse and the controller becomes ready again.
         @(posedge clk);
         #1;
